@@ -38,44 +38,44 @@ app.get("/", (req, res) => {
 });
 
 //Creem un endpoint per obtenir tots els llibres
-app.get("/canciones", (req, res) => {
+app.get("/songs", (req, res) => {
     const data = readData();
 
-    const user = { name: "Yeneviel" }
+    /*const user = { name: "Yeneviel" }
     const htmlMessage = `
    <p>Aquest és un text <strong>amb estil</strong> i un enllaç:</p>
    <a href="https://www.example.com">Visita Example</a>`;
 
-    res.render("books", { user, data, htmlMessage })
-    //res.json(data.books);
+    res.render("songs", { user, data, htmlMessage })*/
+    res.json(data.songs);
 })
 
 //Creem un endpoint per obtenir un llibre per un id
-app.get("/books/:id", (req, res) => {
+app.get("/songs/:id", (req, res) => {
     const data = readData();
     //Extraiem l'id de l'url recordem que req es un objecte tipus requets
     // que conté l'atribut params i el podem consultar
     const id = parseInt(req.params.id);
-    const book = data.books.find((book) => book.id === id);
+    const song = data.songs.find((song) => song.id === id);
 
-    if (book == null) {
+    if (song == null) {
 
         res.status(404).json({ message: "Book not found" });
     } else {
-        res.json(book);
+        res.json(song);
     }
 
 })
 
 //Creem un endpoint del tipus post per afegir un llibre
 
-app.post("/books", (req, res) => {
+app.post("/songs", (req, res) => {
     const data = readData();
     const body = req.body;
     //todo lo que viene en ...body se agrega al nuevo libro
 
-    const { name } = req.body//Treu la clau de l'objecte body
-    const trobat = data.books.find((book) => book.name === name)
+    const { title } = req.body//Treu la clau de l'objecte body
+    const trobat = data.songs.find((song) => song.title === title)
 
     /**Otra forma de hacerlo
      * if(data.books.some((book)=> book.name===name)){
@@ -84,13 +84,13 @@ app.post("/books", (req, res) => {
      * **/
 
     if (!trobat) {
-        const newBook = {
-            id: data.books.length + 1,
+        const newSong = {
+            id: data.songs.length + 1,
             ...body,//Hace una copia del body
         };
-        data.books.push(newBook);
+        data.songs.push(newSong);
         writeData(data);
-        res.json(newBook);
+        res.json(newSong);
     } else {
         res.json({ message: "Este libro ya existe" })
     }
@@ -101,13 +101,13 @@ app.post("/books", (req, res) => {
 //Creem un endpoint per modificar un llibre
 
 
-app.put("/books/:id", (req, res) => {
+app.put("/songs/:id", (req, res) => {
     const data = readData();
     const body = req.body;
     const id = parseInt(req.params.id);
-    const bookIndex = data.books.findIndex((book) => book.id === id);
-    data.books[bookIndex] = {
-        ...data.books[bookIndex],
+    const songIndex = data.songs.findIndex((song) => song.id === id);
+    data.song[songIndex] = {
+        ...data.song[songIndex],
         ...body,
     };
     writeData(data);
@@ -115,17 +115,17 @@ app.put("/books/:id", (req, res) => {
 });
 
 //Creem un endpoint per eliminar un llibre
-app.delete("/books/:id", (req, res) => {
+app.delete("/songs/:id", (req, res) => {
     const data = readData();
     const id = parseInt(req.params.id);
-    const bookIndex = data.books.findIndex((book) => book.id === id);
+    const songIndex = data.songs.findIndex((song) => song.id === id);
     //splice esborra a partir de bookIndex, el número de elements 
     // que li indiqui al segon argument, en aquest cas 1
 
-    if (bookIndex == -1) {
+    if (songIndex == -1) {
         res.status(404).json({ message: "Book not found" })
     } else {
-        data.books.splice(bookIndex, 1);
+        data.songs.splice(songIndex, 1);
         writeData(data);
         res.json({ message: "Book deleted successfully" });
     }
