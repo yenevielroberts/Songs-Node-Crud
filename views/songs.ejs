@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Gestión de canciones para <%= user.name %>!</h1>
+        <h2><%- htmlMessage %></h2>
+    </header>
+    <main>
+        <section>
+            <h2>Lista de canciones</h2>
+            <ul class="song-list">
+                <% data.songs.forEach(song => {%>
+                    <li class="song-item">
+                        <strong><%= song.title %></strong>
+                        <span>Cantante: <%= song.singer%></span>
+                        <span>Year: <%= song.year%></span>
+                    </li>
+                <% }) %>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

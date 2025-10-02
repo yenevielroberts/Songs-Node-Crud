@@ -41,13 +41,13 @@ app.get("/", (req, res) => {
 app.get("/songs", (req, res) => {
     const data = readData();
 
-    /*const user = { name: "Yeneviel" }
+    const user = { name: "Yeneviel" }
     const htmlMessage = `
    <p>Aquest és un text <strong>amb estil</strong> i un enllaç:</p>
    <a href="https://www.example.com">Visita Example</a>`;
 
-    res.render("songs", { user, data, htmlMessage })*/
-    res.json(data.songs);
+    res.render("songs", { user, data, htmlMessage })
+    //res.json(data.songs);
 })
 
 //Creem un endpoint per obtenir un llibre per un id

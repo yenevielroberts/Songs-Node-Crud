@@ -1,1 +1,22 @@
-{"songs":[{"id":1,"title":"Waves","Cantante":"Dean Lewis","Año de lazamiento":"2018"},{"id":2,"title":"7 minutes","Cantante":"Dean Lewis","Año de lazamiento":"2018"},{"id":3,"title":"Alright","Cantante":"Dean Lewis","Año de lazamiento":"2018"}]}
+{
+    "songs": [
+        {
+            "id": 1,
+            "title": "Waves",
+            "singer": "Dean Lewis",
+            "year": "2018"
+        },
+        {
+            "id": 2,
+            "title": "7 minutes",
+            "singer": "Dean Lewis",
+            "year": "2018"
+        },
+        {
+            "id": 3,
+            "title": "Alright",
+            "singer": "Dean Lewis",
+            "year": "2018"
+        }
+    ]
+}
