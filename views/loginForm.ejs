@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+</head>
+
+<body>
+    <div id="container">
+        <form id="login-form">
+            <h2>Login</h2>
+            <label for="login-username">Username:</label>
+            <input type="text" id="login-username" name="username" required>
+
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" name="password" required>
+
+            <button type="submit">Login</button>
+            <span>&nbsp;</span>
+        </form>
+        <p>¿Ya tienes una cuenta?<a href="http://localhost:3000/songs/songs/signup">Signup</a></p>
+        <div>
+
+<script>
+    const $= el => document.querySelector(el);//función flecha
+    const loginForm=$('#login-form')//a la función $ le paso el id del formulario y se obtiene con el querySelector
+    const loginSpan=$('#login-form span')//Busco el span dentro del formulario
+
+</script>
+</body>
+
+</html>

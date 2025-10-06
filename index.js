@@ -9,7 +9,9 @@ app.use(bodyParser.json())
 app.use(express.static("public"));//carpeta publica pel css
 app.set('view engine', 'ejs');//Fem servir el motor ejs
 app.set('views', './views'); //carpeta on desem els arxius .ejs
-
+const PORT=3000;
+//Funció per llegir la informació
+//readData();
 const readData = () => {
     try {
         const data = fs.readFileSync("./db.json");
@@ -30,12 +32,12 @@ const writeData = (data) => {
         console.log(error);
     }
 }
-//Funció per llegir la informació
-//readData();
+
 
 app.get("/", (req, res) => {
     res.render("loginForm")
 });
+
 
 //Creem un endpoint per obtenir tots els llibres
 app.get("/songs", (req, res) => {
@@ -60,12 +62,18 @@ app.get("/songs/:id", (req, res) => {
 
     if (song == null) {
 
-        res.status(404).json({ message: "Book not found" });
+        res.status(404).json({ message: "Song not found" });
     } else {
         res.json(song);
     }
 
 })
+
+//Devuelve la página
+app.get("/songs/songs/signup", (req, res) => {
+    res.render("signupForm")
+});
+
 
 //Creem un endpoint del tipus post per afegir un llibre
 
@@ -95,8 +103,8 @@ app.post("/songs", (req, res) => {
         res.json({ message: "Este libro ya existe" })
     }
 
-
 });
+
 
 //Creem un endpoint per modificar un llibre
 
@@ -123,16 +131,16 @@ app.delete("/songs/:id", (req, res) => {
     // que li indiqui al segon argument, en aquest cas 1
 
     if (songIndex == -1) {
-        res.status(404).json({ message: "Book not found" })
+        res.status(404).json({ message: "Song not found" })
     } else {
         data.songs.splice(songIndex, 1);
         writeData(data);
-        res.json({ message: "Book deleted successfully" });
+        res.json({ message: "Song deleted successfully" });
     }
 
 });
 
 //Funció per escoltar
-app.listen(3000, () => {
-    console.log("Server listing on port 3000");
+app.listen(PORT, () => {
+    console.log(`Server listing on http://localhost:${PORT}`);
 });

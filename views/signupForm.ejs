@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+</head>
+
+<body>
+    <div id="container">
+        <form id="signup-form">
+            <h2>Login</h2>
+            <label for="signup-username">Username:</label>
+            <input type="text" id="signup-username" name="username" required>
+
+            <label for="signup-password1">Password</label>
+            <input type="password" id="signup-password1" name="password" required>
+
+            <label for="signup-password2">Password</label>
+            <input type="password" id="signup-password2" name="password" required>
+
+            <button type="submit">Login</button>
+            <span>&nbsp;</span>
+        </form>
+    </div>
+
+    <script>
+        const $=el => document.querySelector(el);
+        const signupForm=$('#signup-form')
+        const signupSpan=$('#signup-form span')
+    </script>
+</body>
+
+</html>
