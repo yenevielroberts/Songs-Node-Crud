@@ -12,12 +12,13 @@
     <main>
         <section>
             <h2>Lista de canciones</h2>
+            <button id="btn_new_song">Add new song</button>
             <ul class="song-list">
-                <% data.songs.forEach(song => {%>
+                <% data.songs.forEach(song => { %>
                     <li class="song-item">
                         <div>
                             <p><%= song.title %></p>
-                            <a href="/song/<%= song.id %>">View Details</a>
+                            <a href="/songs/songs/<%= song.id %>">View Details</a>
                         </div>
                     </li>
                 <% }) %>

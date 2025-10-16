@@ -47,7 +47,7 @@ router.get("/", (req, res) => {
 })
 
 //Creem un endpoint per obtenir una canço per un id
-router.get("/song/:id", (req, res) => {
+router.get("/songs/:id", (req, res) => {
     const data = readData();
     //Extraiem l'id de l'url recordem que req es un objecte tipus requets
     // que conté l'atribut params i el podem consultar
@@ -58,7 +58,7 @@ router.get("/song/:id", (req, res) => {
 
         res.status(404).json({ message: "Song not found" });
     } else {
-        res.json({song});
+        res.render('songs/detailSong',{song});
     }
 
 })
