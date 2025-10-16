@@ -22,17 +22,54 @@ app.set('views', './views'); // Ubicació de les plantilles
 
 
 //inicio middleware
-
+app.use((req,res,next)=>{//interseta todas las peticiones 
+    const token =req.cookies.access_token//Obtengo el token guardado en la cookie
+    req.session={user: null}//Creo una session. Un objecto con el campo user
+    try{
+        const data=jwt.verify(token,SECRET_JWT_KEY)//Verifico el token
+        req.session.user=data
+    }catch(error){
+        req.session.user=null
+    }
+    next() //Pasa al siguiente endpoint
+})
 
 //Le digo que tengo diferentes endpoints
 app.use('/movies', moviesRoutes);
 app.use('/songs', songsRoutes);
 
+
 //Endpoints
 
 app.get('/', (req, res) => {
-    const {user}=res.session
-    res.render("loginForm")
+    const {user}=req.session//Obtengo la info del usuario
+    res.render("loginForm", user)
+})
+
+app.post('/login', async(req, res)=>{
+
+    try{
+
+        const {username, password}=req.body
+        const user=await UserRepository.login({username, password})
+
+        //Genero el token
+        const token=jwt.sign(
+            {id: user._id, username:user.username},
+            SECRET_JWT_KEY,
+            {expiresIn:'1h'}
+        )
+        //Creo una cookie en la respuesta HTTP. Primer argumento nombre de la cookie,segundor argumento el valor que se guardara y último opciones de seguridad y duración
+        .cookie('access_token',token,{
+            httpOnly:true,
+            secure: process.env.NODE_ENV==='production',
+            sameSite:'strict',
+            maxAge:1000*60*60
+        })
+        .send({user, token})
+    }catch(error){
+        res.status(401).send(error.message)
+    }
 })
 
 app.post ('/signup',async (req, res)=>{
