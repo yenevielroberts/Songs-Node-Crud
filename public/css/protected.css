@@ -1,0 +1,13 @@
+body {
+    background-color: aliceblue;
+}
+
+span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color:red;
+}

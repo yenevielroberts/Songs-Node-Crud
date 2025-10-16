@@ -4,32 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/signup.js" type="module" defer></script>
+    <link rel="stylesheet" href="./css/style.css">
     <title>Sign up</title>
 </head>
 
 <body>
-    <div id="container">
-        <form id="signup-form">
-            <h2>Login</h2>
-            <label for="signup-username">Username:</label>
-            <input type="text" id="signup-username" name="username" required>
+    <div class="container">
+        <% if (typeof username!='undefined' ) { %>
+            <div class="form-container">
+                <h2>Hola <%=username%>!</h2>
+                <p>Estas en el panel de admin</p>
+                <button id="close-session">Cerrar sesión</button>
+                <a href="/protected">Seguir administrando</a>
+            </div>
+        <% } %>
+        <% if (typeof username==='undefined' ) { %>
+            <div class="form-container">
+                <form id="register-form">
+                    <h2>Register</h2>
+                    <label for="register-username">Username:</label>
+                    <input type="text" id="register-username" name="username" required>
 
-            <label for="signup-password1">Password</label>
-            <input type="password" id="signup-password1" name="password" required>
+                    <label for="register-password">Password</label>
+                    <input type="password" id="register-password" name="password" required>
 
-            <label for="signup-password2">Password</label>
-            <input type="password" id="signup-password2" name="password" required>
+                    <label for="register-confirm-password">Password</label>
+                    <input type="password" id="register-confirm-password" name="confirm-password" required>
 
-            <button type="submit">Login</button>
-            <span>&nbsp;</span>
-        </form>
-    </div>
-
-    <script>
-        const $=el => document.querySelector(el);
-        const signupForm=$('#signup-form')
-        const signupSpan=$('#signup-form span')
-    </script>
+                    <button type="submit">Register</button>
+                    <span>&nbsp;</span>
+                </form>
+            </div>
+        <% } %>
+</div>
 </body>
 
 </html>

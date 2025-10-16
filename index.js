@@ -1,11 +1,11 @@
 import express from 'express';
-import { PORT, SECRET_JWT_KEY } from './config.js'
-import { UserRepository } from './user-repository.js';
+import { PORT, SECRET_JWT_KEY } from './config.js';
+import { UserRepository } from './user_respository.js';
 import cookieParser from 'cookie-parser';
-import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken';
 import methodOverride from 'method-override';//simula peticiones PUT y DELETE en los formularios HTML
-import songsRoutes from './routes/songs.js';
-import moviesRoutes from './routes/movies.js'
+//import songsRoutes from './routes/songs.js';
+//import moviesRoutes from './routes/movies.js';
 
 const app = express();
 //Declaro lo que usaré
@@ -35,8 +35,8 @@ app.use((req,res,next)=>{//interseta todas las peticiones
 })
 
 //Le digo que tengo diferentes endpoints
-app.use('/movies', moviesRoutes);
-app.use('/songs', songsRoutes);
+//app.use('/movies', moviesRoutes);
+//app.use('/songs', songsRoutes);
 
 
 //Endpoints
@@ -45,6 +45,11 @@ app.get('/', (req, res) => {
     const {user}=req.session//Obtengo la info del usuario
     res.render("loginForm", user)
 })
+
+app.get('/signup', (req, res) => {
+    
+    res.render("signupForm")
+})  
 
 app.post('/login', async(req, res)=>{
 
@@ -73,8 +78,7 @@ app.post('/login', async(req, res)=>{
 })
 
 app.post ('/signup',async (req, res)=>{
-    console.log("cuerpo",req.body)
-
+    
     const {username, password}=req.body//Obtengo los valores del body enviado en el json
     try{
         const id= await UserRepository.create({username, password});
@@ -86,7 +90,7 @@ app.post ('/signup',async (req, res)=>{
 })
 
 
-app.post('/login', async(req,res)=> {
+app.post('/logut', async(req,res)=> {
 
     const{username, password}=req.body
     
