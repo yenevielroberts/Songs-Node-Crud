@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <h1>Details</h1>
-    <p>title: <%=song.title %></p>
-    <p>Singer: <%=song.singer %></p>
-    <p>Year of released: <%=song.year %></p>
 
-    <button id="btn-editar_song">Editar</button>
-    <button id="btn-eliminar-song">Eliminar</button>
+<body>
+    <div id="container">
+        <h1>
+            <%= song.title%>
+        </h1>
+        <p>Singer: <%= song.singer %>
+        </p>
+        <p>Year of realesed: <%= song.year %>
+        </p>
+
+        <a href="/songs/songs/<%= song.id %>">Edit</a>
+        <a>Delete</a>
+    </div>
 
 </body>
+
 </html>

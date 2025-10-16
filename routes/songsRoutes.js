@@ -58,6 +58,22 @@ router.get("/songs/:id", (req, res) => {
 
         res.status(404).json({ message: "Song not found" });
     } else {
+         res.render('songs/editSong',{song});
+    }
+
+})
+//Creem un endpoint per obtenir una canço per un id
+router.get("/show/:id", (req, res) => {
+    const data = readData();
+    //Extraiem l'id de l'url recordem que req es un objecte tipus requets
+    // que conté l'atribut params i el podem consultar
+    const id = parseInt(req.params.id);
+    const song = data.songs.find((song) => song.id === id);
+
+    if (song == null) {
+
+        res.status(404).json({ message: "Song not found" });
+    } else {
         res.render('songs/detailSong',{song});
     }
 
