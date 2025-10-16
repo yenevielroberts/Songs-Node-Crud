@@ -7,7 +7,7 @@ const router=express.Router();
 //readData();
 const readData = () => {
     try {
-        const data = fs.readFileSync("../db/db.json");
+        const data = fs.readFileSync("./db/db.json");
         //console.log(data);
         //console.log(JSON.parse(data));
         return JSON.parse(data)
@@ -20,7 +20,7 @@ const readData = () => {
 //Funció per escriure informació
 const writeData = (data) => {
     try {
-        fs.writeFileSync(".,/db/db.json", JSON.stringify(data));
+        fs.writeFileSync("./db/db.json", JSON.stringify(data));
 
     } catch (error) {
         console.log(error);
@@ -29,14 +29,23 @@ const writeData = (data) => {
 
 //Endpoints
 router.get("/", (req, res) => {
-    const data = readData();
 
-    const user = { name: "Yeneviel" }
-    const htmlMessage = `
-   <p>Aquest és un text <strong>amb estil</strong> i un enllaç:</p>
-   <a href="https://www.example.com">Visita Example</a>`;
+     const {user}=req.session //Obtengo los datos de session del usuario
 
-    res.render("songs", { user, data, htmlMessage })
+    if(!user){
+
+        return res.status(403).send('acceso no autorizado')
+    } else{
+
+        const data = readData();
+
+        const user = { name: "Yeneviel" }
+
+        res.render("songs", { user, data })
+    }
+
+
+   
 })
 
 //Creem un endpoint per obtenir una canço per un id

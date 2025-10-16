@@ -4,7 +4,7 @@ import { UserRepository } from './user_respository.js';
 import cookieParser from 'cookie-parser';
 import jwt from 'jsonwebtoken';
 import methodOverride from 'method-override';//simula peticiones PUT y DELETE en los formularios HTML
-//import songsRoutes from './routes/songs.js';
+import songsRoutes from './routes/songsRoutes.js';
 //import moviesRoutes from './routes/movies.js';
 
 const app = express();
@@ -36,7 +36,7 @@ app.use((req,res,next)=>{//interseta todas las peticiones
 
 //Le digo que tengo diferentes endpoints
 //app.use('/movies', moviesRoutes);
-//app.use('/songs', songsRoutes);
+app.use('/songs', songsRoutes);
 
 
 //Endpoints
@@ -47,7 +47,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/signup', (req, res) => {
-    
+
     res.render("signupForm")
 })  
 
@@ -64,6 +64,7 @@ app.post('/login', async(req, res)=>{
             SECRET_JWT_KEY,
             {expiresIn:'1h'}
         )
+        res
         //Creo una cookie en la respuesta HTTP. Primer argumento nombre de la cookie,segundor argumento el valor que se guardara y último opciones de seguridad y duración
         .cookie('access_token',token,{
             httpOnly:true,
@@ -90,16 +91,26 @@ app.post ('/signup',async (req, res)=>{
 })
 
 
-app.post('/logut', async(req,res)=> {
+app.post('/logout', async(req,res)=> {
 
-    const{username, password}=req.body
+    res
+    .clearCookie('access_token')//Elimino la cookie
+    .json({message:'Logout successfull'})
+    .send('logout');
     
+});
+
+app.get('/protected2',(req, res)=>{
+    const {user}=req.session //Obtengo los datos de session del usuario
+    if(!user) return res.status(403).send('acceso no autorizado')
+        res.render('protected2', user)
 })
 
 app.get('/protected', (req,res)=>{
-    res.render('protected')
+      const {user}=req.session
+    if (!user) return res.status(403).send('acceso no autorizado')
+    res.render('home',user)
 })
-
 
 
 
