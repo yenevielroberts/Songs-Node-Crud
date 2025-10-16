@@ -15,9 +15,10 @@
             <ul class="song-list">
                 <% data.songs.forEach(song => {%>
                     <li class="song-item">
-                        <strong><%= song.title %></strong>
-                        <span>Cantante: <%= song.singer%></span>
-                        <span>Year: <%= song.year%></span>
+                        <div>
+                            <p><%= song.title %></p>
+                            <a href="/song/<%= song.id %>">View Details</a>
+                        </div>
                     </li>
                 <% }) %>
             </ul>

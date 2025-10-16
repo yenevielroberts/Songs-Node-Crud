@@ -30,18 +30,16 @@ const writeData = (data) => {
 //Endpoints
 router.get("/", (req, res) => {
 
-     const {user}=req.session //Obtengo los datos de session del usuario
+    const {user}=req.session //Obtengo los datos de session del usuario
 
     if(!user){
-
-        return res.status(403).send('acceso no autorizado')
+        const mensaje="Acceso no autorizado"
+        return res.status(403).render('noAutorizado', {mensaje})
     } else{
 
         const data = readData();
-
         const user = { name: "Yeneviel" }
-
-        res.render("songs", { user, data })
+        res.render("songs/listSongs", { user, data })
     }
 
 
@@ -60,7 +58,7 @@ router.get("/song/:id", (req, res) => {
 
         res.status(404).json({ message: "Song not found" });
     } else {
-        res.json(song);
+        res.json({song});
     }
 
 })
