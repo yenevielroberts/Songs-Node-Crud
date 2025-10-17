@@ -10,6 +10,13 @@
 </head>
 
 <body>
+    <header>
+        <nav>
+            <a>Home</a>
+            <a>Log in</a>
+            <a>Log out</a>
+        </nav>
+    </header>
     <div class="container">
         <% if (typeof username!='undefined' ) { %>
             <div class="form-container">
@@ -18,24 +25,24 @@
                 <button id="close-session">Cerrar sesión</button>
                 <a href="/protected">Seguir administrando</a>
             </div>
-        <% } %>
+            <% } %>
 
-        <% if (typeof username==='undefined' ) { %>
-            <div class="form-container">
-                <form id="login-form">
-                    <h2>Login</h2>
-                    <label for="login-username">Username:</label>
-                    <input type="text" id="login-username" name="username" required>
+                <% if (typeof username==='undefined' ) { %>
+                    <div class="form-container">
+                        <form id="login-form">
+                            <h2>Login</h2>
+                            <label for="login-username">Username:</label>
+                            <input type="text" id="login-username" name="username" required>
 
-                    <label for="login-password">Password</label>
-                    <input type="password" id="login-password" name="password" required>
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" name="password" required>
 
-                    <button type="submit">Login</button>
-                    <a href="/signup">¿No tienes cuenta?</a>
-                    <span>&nbsp;</span>
-                </form>
-            </div>
-        <% } %>
+                            <button type="submit">Login</button>
+                            <a href="/signup">¿No tienes cuenta?</a>
+                            <span>&nbsp;</span>
+                        </form>
+                    </div>
+                    <% } %>
     </div>
 </body>
 
