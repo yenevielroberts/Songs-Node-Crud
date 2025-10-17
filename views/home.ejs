@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <script src="./js/login.js" type="module" defer></script>
 </head>
+
 <body>
-    <h1>Home</h1>
+    <div class="form-container">
+        <h1>Hola <%=username%>!</h1>
+        <p>Estas en el panel de admin</p>
+        <button id="close-session">Cerrar sesión</button>
+        <a href="/protected">Seguir administrando</a>
+    </div>
     <a href="/songs"> Lista de canciones</a>
 </body>
+
 </html>

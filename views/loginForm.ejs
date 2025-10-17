@@ -5,44 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./js/login.js" type="module" defer></script>
+    <script src="./js/header.js" type="module" defer></script>
     <link rel="stylesheet" href="./css/style.css">
     <title>Log in</title>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <a>Home</a>
-            <a>Log in</a>
-            <a>Log out</a>
-        </nav>
-    </header>
-    <div class="container">
-        <% if (typeof username!='undefined' ) { %>
-            <div class="form-container">
-                <h2>Hola <%=username%>!</h2>
-                <p>Estas en el panel de admin</p>
-                <button id="close-session">Cerrar sesión</button>
-                <a href="/protected">Seguir administrando</a>
+    <header></header>
+    <div class="form-container">
+        <form id="login-form">
+            <h2>Login</h2>
+            <div id="form-body">
+                <label for="login-username">Username:</label>
+                <input type="text" id="login-username" name="username" required>
+
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" name="password" required>
+
+                <button type="submit">Login</button>
+                <a href="/signup">¿No tienes cuenta?</a>
+                <span>&nbsp;</span>
             </div>
-            <% } %>
 
-                <% if (typeof username==='undefined' ) { %>
-                    <div class="form-container">
-                        <form id="login-form">
-                            <h2>Login</h2>
-                            <label for="login-username">Username:</label>
-                            <input type="text" id="login-username" name="username" required>
-
-                            <label for="login-password">Password</label>
-                            <input type="password" id="login-password" name="password" required>
-
-                            <button type="submit">Login</button>
-                            <a href="/signup">¿No tienes cuenta?</a>
-                            <span>&nbsp;</span>
-                        </form>
-                    </div>
-                    <% } %>
+        </form>
     </div>
 </body>
 
