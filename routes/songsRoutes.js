@@ -115,12 +115,12 @@ router.put("/songs/:id", (req, res) => {
     const body = req.body;
     const id = parseInt(req.params.id);
     const songIndex = data.songs.findIndex((song) => song.id === id);
-    data.song[songIndex] = {
-        ...data.song[songIndex],
+    data.songs[songIndex] = {//Combina los dos objetos y actualiza los campos del body  y deja intactos los demás.
+        ...data.songs[songIndex],
         ...body,
     };
     writeData(data);
-    res.json({ message: "Song updated successfully" });
+    res.json({ message: "Song updated successfully", id:id });
 });
 
 
@@ -143,3 +143,15 @@ router.delete("/songs/:id", (req, res) => {
 });
 
 export default router;
+
+
+/*
+
+se combianan los dos objetos y actualiza los campos del body  y deja intactos los demás.
+Pone todos los campos y si hay dos con el mismo nombre los sobreescribe con el valor del body y deja un solo
+ data.songs[songIndex] = {
+        ...data.songs[songIndex],
+        ...body,
+    };
+
+*/

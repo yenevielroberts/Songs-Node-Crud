@@ -8,7 +8,8 @@
 </head>
 <body>
     <div id="container">
-        <form>
+        <form id="form_edit">
+            <input type="hidden" id="id_song" name="id_song" value="<%= song.id%>">
             <label for="title">Title:</label>
             <input type="text" id="title" name="title"value="<%= song.title%>" required>
 

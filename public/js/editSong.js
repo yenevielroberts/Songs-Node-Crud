@@ -1,15 +1,13 @@
-const btn_editat=document.getElementById('btn-form-editar')
+const form_edit=document.getElementById('form_edit')
 
 
-btn_editat.addEventListener('submit', e=>{
+form_edit.addEventListener('submit', e=>{
     e.preventDefault()
 
-    alert('Hola')
-    console.log('Dentro')
-
-    const titleSong=doc.getElementById('title').value
-    const singer=doc.getElementById('singer').value
-    const yearReleased=doc.getElementById('year').value
+    const titleSong=document.getElementById('title').value
+    const singer=document.getElementById('singer').value
+    const yearReleased=document.getElementById('year').value
+    const id_song=document.getElementById('id_song').value
 
     const newSong={
         title:titleSong,
@@ -17,20 +15,21 @@ btn_editat.addEventListener('submit', e=>{
         year:yearReleased
     }
 
-    fetch('/songs/songs/id',{
+    fetch(`/songs/songs/${id_song}`,{
         method: 'PUT',
         headers: {
             'Content-Type':'application/json'
         },
-        body: newSong
+        body: JSON.stringify(newSong)
 
     })
 
-    .then(res=>{
+    .then(async (res)=>{
 
-        const song =res.json()
+        const song =await res.json()//Envia una promesa por eso tengo que hacer la función async y poner un await
 
-        if(res.ok){
+       if(res.ok){
+
             window.location.href=`/songs/show/${song.id}`
         }else{
             alert('Error al actualizar la cancion')
