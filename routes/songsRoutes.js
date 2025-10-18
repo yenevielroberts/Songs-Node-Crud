@@ -42,11 +42,23 @@ router.get("/", (req, res) => {
         res.render("songs/listSongs", { user, data })
     }
 
+})
+router.get("/songs",(req, res)=>{
 
-   
+     const {user}=req.session //Obtengo los datos de session del usuario
+
+    if(!user){
+        const mensaje="Acceso no autorizado"
+        return res.status(403).render('noAutorizado', {mensaje})
+    } else{
+
+        const data = readData();
+        const user = { name: "Yeneviel" }
+        res.render("songs/createSong", { user, data })
+    } 
 })
 
-//Creem un endpoint per obtenir una canço per un id
+//Creem un endpoint per obtenir un formulario con los datos ya rellenados para editar
 router.get("/songs/:id", (req, res) => {
     const data = readData();
     //Extraiem l'id de l'url recordem que req es un objecte tipus requets
@@ -62,7 +74,7 @@ router.get("/songs/:id", (req, res) => {
     }
 
 })
-//Creem un endpoint per obtenir una canço per un id
+//Creem un endpoint per obtenir una canço per un id y mostrarlo en vista
 router.get("/show/:id", (req, res) => {
     const data = readData();
     //Extraiem l'id de l'url recordem que req es un objecte tipus requets
@@ -102,9 +114,9 @@ router.post("/songs", (req, res) => {
         };
         data.songs.push(newSong);
         writeData(data);
-        res.json(newSong);
+        res.render('songs/detailSong',{newSong});
     } else {
-        res.json({ message: "This song already exists" })
+        res.render({ message: "This song already exists" })
     }
 
 });

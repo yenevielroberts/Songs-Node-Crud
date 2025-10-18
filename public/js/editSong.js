@@ -1,4 +1,6 @@
-const form_edit=document.getElementById('form_edit')
+const form_edit=document.getElementById('form-song')
+const btn_cancelar=document.getElementById('btn-form-cancelar');
+const id_song=document.getElementById('id_song').value
 
 
 form_edit.addEventListener('submit', e=>{
@@ -7,7 +9,6 @@ form_edit.addEventListener('submit', e=>{
     const titleSong=document.getElementById('title').value
     const singer=document.getElementById('singer').value
     const yearReleased=document.getElementById('year').value
-    const id_song=document.getElementById('id_song').value
 
     const newSong={
         title:titleSong,
@@ -35,4 +36,10 @@ form_edit.addEventListener('submit', e=>{
             alert('Error al actualizar la cancion')
         }
     })
+})
+
+btn_cancelar.addEventListener('click',()=>{
+
+    window.location.href=`/songs/show/${id_song}`
+
 })
