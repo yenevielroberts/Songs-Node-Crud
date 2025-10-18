@@ -1,16 +1,11 @@
 
 const header = document.querySelector('header')
-const nav = document.createElement('nav');
+const nameSite=document.createElement('p');
 
-nav.innerHTML = `
+nameSite.textContent='MoSic Lovers';
 
-    <a href="/protected">Home</a>
-    <a href="/">Log in</a>
-    <a href="/signup">Sign up</a>
-`;
 
-header.style="display:flex; flex-direction:row; background-color:#9D174D; width:100%; height:70px; justify-content: right; align-items:centet;"
+header.style=" display:flex; flex-direction:row; background-color:#9D174D; width:100%; height:70px; justify-content:space between; color:white;";
+nameSite.style='width:100%; font-size:20px; align-items:center; margin-left:5px;'
 
-nav.style=" margin:5px; padding:5px;"
-
-header.appendChild(nav)
+header.appendChild(nameSite)

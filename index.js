@@ -102,13 +102,13 @@ app.post('/logout', async(req,res)=> {
 
 app.get('/protected2',(req, res)=>{
     const {user}=req.session //Obtengo los datos de session del usuario
-    if(!user) return res.status(403).send('acceso no autorizado')
+    if(!user) return res.status(403).render('noAutorizado',{message:'Access denied'})
         res.render('protected2', user)
 })
 
 app.get('/protected', (req,res)=>{
       const {user}=req.session
-    if (!user) return res.status(403).send('acceso no autorizado')
+    if (!user) return res.status(403).render('noAutorizado',{message:'Access denied'})
     res.render('home',user)
 })
 

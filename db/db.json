@@ -1,1 +1,24 @@
-{"songs":[{"id":4,"title":"Enough","singer":"Bo Baskoro","year":"2020"},{"id":5,"title":"Closer","singer":"Bo Baskoro","year":"2020"}]}
+{
+    "songs": [
+        {
+            "id": 4,
+            "title": "Enough",
+            "singer": "Bo Baskoro",
+            "year": "2020"
+        },
+        {
+            "id": 5,
+            "title": "Closer",
+            "singer": "Bo Baskoro",
+            "year": "2020"
+        }
+    ],
+    "movies":[
+        {
+            "id": 1,
+            "title": "How I live now",
+            "Author": "Bo Baskoro",
+            "year": "2020"
+        }
+    ]
+}

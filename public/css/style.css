@@ -49,7 +49,7 @@ input {
     margin: 10px;
 }
 
-button {
+button{
     width: 125px;
     height: 30px;
     background-color: #1E3A8A;
@@ -75,6 +75,15 @@ h2 {
     align-items: center;
     width: 100%;
 
+}
+
+form a{
+    color:dodgerblue;
+}
+
+form a:hover{
+    color:#F59E0B;
+    font-weight: bold;
 }
 
 /*#DAA520*/

@@ -17,11 +17,12 @@
             <%= song.title%>
         </h1>
         <input type="hidden" name="id_song" id="id_song" value="<%= song.id %>">
-        <p>Singer: <%= song.singer %>
+        <p><strong>Singer: </strong><%= song.singer %>
         </p>
-        <p>Year of realesed: <%= song.year %>
+        <p><strong>Year of realesed:</strong> <%= song.year %>
         </p>
         <div class="btns">
+            <a href="/songs">List</a>
             <a href="/songs/songs/<%= song.id %>">Edit</a>
             <button id="btn-delete">Delete</button>
         </div>
