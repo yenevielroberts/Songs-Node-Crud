@@ -5,39 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./js/signup.js" type="module" defer></script>
+    <script src="./js/header.js" type="module" defer></script>
     <link rel="stylesheet" href="./css/style.css">
     <title>Sign up</title>
 </head>
 
 <body>
-    <div class="container">
-        <% if (typeof username!='undefined' ) { %>
-            <div class="form-container">
-                <h2>Hola <%=username%>!</h2>
-                <p>Estas en el panel de admin</p>
-                <button id="close-session">Cerrar sesión</button>
-                <a href="/protected">Seguir administrando</a>
+    <header></header>
+    <div class="form-container">
+        <form id="register-form">
+            <h2>Register</h2>
+            <div class="form-body">
+                <label for="register-username">Username:</label>
+                <input type="text" id="register-username" name="username" required>
+
+                <label for="register-password">Password</label>
+                <input type="password" id="register-password" name="password" required>
+
+                <label for="register-confirm-password">Password</label>
+                <input type="password" id="register-confirm-password" name="confirm-password" required>
+
+                <button type="submit">Register</button>
+                <span>&nbsp;</span>
             </div>
-        <% } %>
-        <% if (typeof username==='undefined' ) { %>
-            <div class="form-container">
-                <form id="register-form">
-                    <h2>Register</h2>
-                    <label for="register-username">Username:</label>
-                    <input type="text" id="register-username" name="username" required>
 
-                    <label for="register-password">Password</label>
-                    <input type="password" id="register-password" name="password" required>
-
-                    <label for="register-confirm-password">Password</label>
-                    <input type="password" id="register-confirm-password" name="confirm-password" required>
-
-                    <button type="submit">Register</button>
-                    <span>&nbsp;</span>
-                </form>
-            </div>
-        <% } %>
-</div>
+        </form>
+    </div>
 </body>
 
 </html>

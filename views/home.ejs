@@ -5,17 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <script src="./js/header.js" type="module" defer></script>
     <script src="./js/login.js" type="module" defer></script>
+    <link rel="stylesheet" href="./css/style-songs.css">
 </head>
 
 <body>
-    <div class="form-container">
+    <header></header>
+    <div class="container">
+        <div id="admin-panel">
         <h1>Hola <%=username%>!</h1>
         <p>Estas en el panel de admin</p>
+        <a href="/protected">Administrando items</a>
         <button id="close-session">Cerrar sesión</button>
-        <a href="/protected">Seguir administrando</a>
     </div>
-    <a href="/songs"> Lista de canciones</a>
+    <section class="btns">
+        <a href="/songs"> Lista de canciones</a>
+        <a href=""> Lista de películas</a>
+    </section>
+    
+    </div>
+    
 </body>
 
 </html>

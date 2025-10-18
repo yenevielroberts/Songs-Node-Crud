@@ -1,0 +1,108 @@
+body{
+
+   background-color: #0B0C10;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   color: white;
+}
+
+/*Enlaces del header*/
+a{
+    color:white;
+    text-decoration: none;
+    margin: 10px;
+
+}
+
+/*Estilo Home*/
+.container{
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   /* background-color: #F5F3F4;
+    */
+    border-radius: 5px;
+    margin-top: 50px;
+    color:white;
+    border: solid #9D174D;
+} 
+
+#admin-panel{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 100%;
+    margin: 10px;
+    align-items: center;
+   
+   
+}
+
+
+/*End estilo Home*/
+
+/*Botones y enlaces*/
+.btns{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    margin: 10px;
+}
+
+.container a, button{
+    height: fit-content;
+    border-radius: 15px;
+    border: 0px;
+    padding: 10px;
+    background-color:#1E3A8A;
+    color: black;
+    margin: 5px;
+    text-decoration: none;
+    color: white;
+}
+
+.container a:hover{
+    background-color:#F59E0B;
+
+}
+
+button:hover{
+    background-color:#F59E0B;
+}
+
+/*Botones y enlaces*/
+
+/*Estilo items*/
+.lista-item{
+
+    background-color:#9D174D;
+    width: 400px;
+    list-style: none;
+    border-radius: 15px;
+}
+
+.lista-item div{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    margin: 10px;
+}
+
+.lista-item a{
+    background-color: inherit;
+    margin: 5px;
+}
+
+.lista-item a:hover{
+
+    color:#F59E0B;
+    font-weight: bold;
+    background-color: inherit;
+}
