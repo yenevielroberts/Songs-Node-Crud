@@ -1,10 +1,10 @@
 
-const btnDelete = document.getElementById('btn-delete');
+const btnDeleteSong = document.getElementById('btn-delete-song');
 
-btnDelete.addEventListener('click', () => {
+btnDeleteSong.addEventListener('click', () => {
 
-    const confirmacion = confirm('Are you sure?');
-    if (confirmacion == true) {
+    const confirmation = confirm('Are you sure?');
+    if (confirmation == true) {
 
         const item_id = parseInt(document.getElementById('item_id').value)
 
@@ -19,9 +19,9 @@ btnDelete.addEventListener('click', () => {
 
                 if (res.ok) {
                     window.location.href = '/songs';
-                } else {
-                    alert('error')
                 }
             })
-    } 
+    }
 })
+
+

@@ -1,7 +1,7 @@
 
 
 const formCreateMovie=document.getElementById('form-create-movie');
-const btn_cancelar=document.getElementById('btn-form-cancel');
+const btn_cancel=document.getElementById('btn-form-cancel');
 
 formCreateMovie.addEventListener('submit',e=>{
     e.preventDefault()
@@ -16,7 +16,7 @@ formCreateMovie.addEventListener('submit',e=>{
         year:year
     }
 
-    fetch('/movies/movies',{
+    fetch('/movies/movies',{//Hago una petición
         method:'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -27,14 +27,19 @@ formCreateMovie.addEventListener('submit',e=>{
         if(res.ok){
             
             const movie= await res.json()
-            window.location.href=`/movies/show/${movie.id}`
-        }else{
-            alert('error')
+
+            if(movie.message){
+                alert(movie.message)
+            }else{
+                window.location.href=`/movies/show/${movie.id}`
+            }
+           
+
         }
     })
 })
 
-btn_cancelar.addEventListener('click',()=>{
+btn_cancel.addEventListener('click',()=>{
 
     window.location.href=`/movies`
 

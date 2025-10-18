@@ -1,1 +1,30 @@
-{"songs":[{"id":4,"title":"Enough","singer":"Bo Baskoro","year":"2020"},{"id":5,"title":"Closer","singer":"Bo Baskoro","year":"2020"}],"movies":[{"id":1,"title":"How I live now","director":"Sarah Mo","year":"2020"}]}
+{
+    "songs": [
+        {
+            "id": 3,
+            "title": "Lovers rock",
+            "singer": "yo",
+            "year": "2010"
+        },
+        {
+            "id": 2,
+            "title": "Closer",
+            "singer": "Dean Lewis",
+            "year": "2010"
+        }
+    ],
+    "movies": [
+        {
+            "id": 2,
+            "title": "How I live now",
+            "director": "YP",
+            "year": "2019"
+        },
+        {
+            "id": 3,
+            "title": "How I live now",
+            "director": "Y",
+            "year": "2019"
+        }
+    ]
+}

@@ -167,7 +167,7 @@ router.post("/movies", (req, res) => {
 
             if (!trobat) {
                 const newMovie = {
-                    id: data.songs.length + 1,
+                    id: data.movies.length + 1,
                     ...body,//fa una copia del body
                 };
                 data.movies.push(newMovie);

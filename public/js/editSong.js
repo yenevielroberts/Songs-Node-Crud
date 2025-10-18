@@ -1,5 +1,5 @@
 const form_edit=document.getElementById('form-edit-song')
-const btn_cancelar=document.getElementById('btn-form-cancel');
+const btn_cancel=document.getElementById('btn-form-cancel');
 const id_song=document.getElementById('id_song').value
 
 
@@ -38,7 +38,7 @@ form_edit.addEventListener('submit', e=>{
     })
 })
 
-btn_cancelar.addEventListener('click',()=>{
+btn_cancel.addEventListener('click',()=>{
 
     window.location.href=`/songs/show/${id_song}`
 
