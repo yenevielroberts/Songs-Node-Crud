@@ -1,5 +1,5 @@
 const form_edit=document.getElementById('form-edit-song')
-const btn_cancelar=document.getElementById('btn-form-cancelar');
+const btn_cancelar=document.getElementById('btn-form-cancel');
 const id_song=document.getElementById('id_song').value
 
 

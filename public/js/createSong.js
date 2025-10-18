@@ -1,6 +1,6 @@
 
 const formCreateSong=document.getElementById('form-create-song');
-const btn_cancelar=document.getElementById('btn-form-cancelar');
+const btn_cancelar=document.getElementById('btn-form-cancel');
 
 formCreateSong.addEventListener('submit',e=>{
     e.preventDefault()
