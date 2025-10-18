@@ -1,16 +1,1 @@
-{
-    "songs": [
-        {
-            "id": 3,
-            "title": "Lovers rock",
-            "singer": "yo",
-            "year": "2010"
-        },
-        {
-            "id": 2,
-            "title": "Closer",
-            "singer": "Dean Lewis",
-            "year": "2010"
-        }
-    ]
-}
+{"songs":[{"id":3,"title":"Lovers rock","singer":"yo","year":"2010"},{"id":2,"title":"Closer","singer":"Dean Lewis","year":"2010"}],"movies":[{"id":"757218d1-8508-45ac-acb8-8e2943cf466e","title":"moana","director":"Mo","year":"2010"},{"id":"d2d8489e-0d40-4805-97af-b9be6957f5b5","title":"moana","director":"YP","year":"2010"}]}

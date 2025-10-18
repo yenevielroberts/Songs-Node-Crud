@@ -35,7 +35,7 @@ router.get("/", (req, res) => {
         const { user } = req.session //Obtengo los datos de session del usuario
 
         if (!user) {
-            return res.status(403).render('noAutorizado',{message:'Access denied'})
+            return res.status(403).render('unauthorized',{message:'Access denied'})
         } else {
 
             const data = readData();
@@ -45,7 +45,7 @@ router.get("/", (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.status(500).render('noAutirozado',{ message: 'Internal server error' })
+        res.status(500).render('unauthorized',{ message: 'Internal server error' })
     }
 
 
@@ -59,7 +59,7 @@ router.get("/songs", (req, res) => {
         const { user } = req.session //Obtengo los datos de session del usuario
 
         if (!user) {
-            return res.status(403).render('noAutorizado',{message:'Access denied'})
+            return res.status(403).render('unauthorized',{message:'Access denied'})
         } else {
 
             res.render("songs/createSong")
@@ -67,7 +67,7 @@ router.get("/songs", (req, res) => {
     } catch (error) {
 
         console.log(error);
-        res.status(500).render('noAutorizado',{ message: 'Internal server error' })
+        res.status(500).render('unauthorized',{ message: 'Internal server error' })
     }
 
 })
@@ -79,7 +79,7 @@ router.get("/songs/:id", (req, res) => {
         //compruebo accesso
         const { user } = req.session
         if (!user) {
-            return res.status(403).render('noAutorizado',{message:'Access denied'})
+            return res.status(403).render('unauthorized',{message:'Access denied'})
         } {
             const data = readData();
             //Extraiem l'id de l'url recordem que req es un objecte tipus requets
@@ -97,7 +97,7 @@ router.get("/songs/:id", (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.status(500).render('noAutorizado', {message:"Internal server error"})
+        res.status(500).render('unauthorized', {message:"Internal server error"})
     }
 
 
@@ -109,7 +109,7 @@ router.get("/show/:id", (req, res) => {
         //compruebo accesso
         const { user } = req.session
         if (!user) {
-            return res.status(403).render('noAutorizado',{message:'Access denied'})
+            return res.status(403).render('unauthorized',{message:'Access denied'})
         } else {
             const data = readData();
             //Extraiem l'id de l'url recordem que req es un objecte tipus requets
@@ -127,7 +127,7 @@ router.get("/show/:id", (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.status(500).render('noAutorizado',{ message: 'Internal server error' })
+        res.status(500).render('unauthorized',{ message: 'Internal server error' })
     }
 
 
@@ -141,7 +141,7 @@ router.post("/songs", (req, res) => {
         //compruebo acceso
         const { user } = req.session
         if (!user) {
-            return res.status(403).render('noAutorizado',{message:'Access denied'})
+            return res.status(403).render('unauthorized',{message:'Access denied'})
         } else {
             const data = readData();
             const body = req.body;
@@ -171,7 +171,7 @@ router.post("/songs", (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.status(500).render('noAutorizado',{ message: 'Internal server error' })
+        res.status(500).render('unauthorized',{ message: 'Internal server error' })
     }
 
 
@@ -185,7 +185,7 @@ router.put("/songs/:id", (req, res) => {
 
         const { user } = req.session
         if (!user) {
-            return res.status(403).render('noAutorizado',{message:'Access denied'})
+            return res.status(403).render('unauthorized',{message:'Access denied'})
         } else {
             const data = readData();
             const body = req.body;
@@ -207,7 +207,7 @@ router.put("/songs/:id", (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.status(500).render('noAutorizado',{ message: 'Internal server error' })
+        res.status(500).render('unauthorized',{ message: 'Internal server error' })
     }
 
 });
@@ -222,7 +222,7 @@ router.delete("/songs/:id", (req, res) => {
         const { user } = req.session
 
         if (!user) {
-            return res.status(403).render('noAutorizado',{message:'Access denied'})
+            return res.status(403).render('unauthorized',{message:'Access denied'})
         } else {
             const data = readData();
             const id = parseInt(req.params.id);
@@ -241,7 +241,7 @@ router.delete("/songs/:id", (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.status(500).render('noAutorizado',{ message: 'Internal server error' })
+        res.status(500).render('unauthorized',{ message: 'Internal server error' })
     }
 });
 
