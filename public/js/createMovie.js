@@ -1,6 +1,7 @@
 
 
 const formCreateMovie=document.getElementById('form-create-movie');
+const btn_cancelar=document.getElementById('btn-form-cancelar');
 
 formCreateMovie.addEventListener('submit',e=>{
     e.preventDefault()
@@ -31,4 +32,10 @@ formCreateMovie.addEventListener('submit',e=>{
             alert('error')
         }
     })
+})
+
+btn_cancelar.addEventListener('click',()=>{
+
+    window.location.href=`/movies`
+
 })

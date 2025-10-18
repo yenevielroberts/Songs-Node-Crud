@@ -1,5 +1,6 @@
 
 const formCreateSong=document.getElementById('form-create-song');
+const btn_cancelar=document.getElementById('btn-form-cancelar');
 
 formCreateSong.addEventListener('submit',e=>{
     e.preventDefault()
@@ -30,4 +31,10 @@ formCreateSong.addEventListener('submit',e=>{
             alert('error')
         }
     })
+})
+
+btn_cancelar.addEventListener('click',()=>{
+
+    window.location.href=`/songs`
+
 })
