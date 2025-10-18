@@ -92,7 +92,7 @@ router.get("/movies/:id", (req, res) => {
 
                 res.status(404).json({ message: "Movie not found" });
             } else {
-                res.render('movies/editMovies', { song: movie });
+                res.render('movies/editMovies', { movie: movie });
             }
         }
 

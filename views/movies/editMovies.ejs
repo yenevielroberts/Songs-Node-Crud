@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit movie</title>
+    <script src="/js/editMovie.js" type="module" defer></script>
+    <link rel="stylesheet" href="/css/style-songs.css">
+    <script src="/js/header.js" type="module" defer></script>
+</head>
+<body>
+        <header></header>
+    <div class="container-form">
+        <h1>Edit</h1>
+        <form id="form-edit-movie">
+            <input type="hidden" id="id_movie" name="id_movie" value="<%= movie.id%>">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title"value="<%= movie.title%>" required>
+
+            <label for="singer">Director</label>
+            <input type="text" id="director" name="director" value="<%= movie.director%>" required>
+
+            <label for="year">Year of released</label>
+            <input type="number" id="year" name="year" value="<%= movie.year%>" required>
+            <div class="btns">
+                <button type="button" id="btn-form-cancelar">Cancelar</button>
+                <button type="submit" id="btn-form-editar">Editar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

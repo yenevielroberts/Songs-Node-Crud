@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit Song</title>
     <script src="/js/editSong.js" type="module" defer></script>
     <link rel="stylesheet" href="/css/style-songs.css">
     <script src="/js/header.js" type="module" defer></script>
 </head>
 <body>
     <header></header>
-    <div class="container-form-song">
+    <div class="container-form">
         <h1>Edit</h1>
-        <form id="form-edit">
+        <form id="form-edit-song">
             <input type="hidden" id="id_song" name="id_song" value="<%= song.id%>">
             <label for="title">Title:</label>
             <input type="text" id="title" name="title"value="<%= song.title%>" required>
@@ -26,9 +26,7 @@
                 <button type="button" id="btn-form-cancelar">Cancelar</button>
                 <button type="submit" id="btn-form-editar">Editar</button>
             </div>
-           
         </form>
-
     </div>
 </body>
 </html>

@@ -1,37 +1,37 @@
-const form_edit=document.getElementById('form-edit-song')
+const form_edit=document.getElementById('form-edit-movie')
 const btn_cancelar=document.getElementById('btn-form-cancelar');
-const id_song=document.getElementById('id_song').value
+const id_movie=document.getElementById('id_movie').value
 
 
 form_edit.addEventListener('submit', e=>{
     e.preventDefault()
 
     const titleSong=document.getElementById('title').value
-    const singer=document.getElementById('singer').value
+    const director=document.getElementById('director').value
     const yearReleased=document.getElementById('year').value
 
-    const newSong={
+    const newMovie={
         title:titleSong,
-        singer:singer,
+        director:director,
         year:yearReleased
     }
 
-    fetch(`/songs/songs/${id_song}`,{
+    fetch(`/movies/movies/${id_movie}`,{
         method: 'PUT',
         headers: {
             'Content-Type':'application/json'
         },
-        body: JSON.stringify(newSong)
+        body: JSON.stringify(newMovie)
 
     })
 
     .then(async (res)=>{
 
-        const song =await res.json()//Envia una promesa por eso tengo que hacer la función async y poner un await
+        const movie =await res.json()//Envia una promesa por eso tengo que hacer la función async y poner un await
 
        if(res.ok){
 
-            window.location.href=`/songs/show/${song.id}`
+            window.location.href=`/movies/show/${movie.id}`
         }else{
             alert('Error al actualizar la cancion')
         }
@@ -40,6 +40,6 @@ form_edit.addEventListener('submit', e=>{
 
 btn_cancelar.addEventListener('click',()=>{
 
-    window.location.href=`/songs/show/${id_song}`
+    window.location.href=`/movies/show/${id_movie}`
 
 })
