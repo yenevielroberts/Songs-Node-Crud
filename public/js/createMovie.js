@@ -1,7 +1,7 @@
 
 
 const formCreateMovie=document.getElementById('form-create-movie');
-const btn_cancelar=document.getElementById('btn-form-cancelar');
+const btn_cancelar=document.getElementById('btn-form-cancel');
 
 formCreateMovie.addEventListener('submit',e=>{
     e.preventDefault()

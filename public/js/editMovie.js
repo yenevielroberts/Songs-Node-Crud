@@ -1,5 +1,5 @@
 const form_edit=document.getElementById('form-edit-movie')
-const btn_cancelar=document.getElementById('btn-form-cancelar');
+const btn_cancelar=document.getElementById('btn-form-cancel');
 const id_movie=document.getElementById('id_movie').value
 
 
