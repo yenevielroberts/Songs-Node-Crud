@@ -18,7 +18,7 @@ app.use(methodOverride('_method'));
 
 
 app.set('view engine', 'ejs'); // Motor de plantilles
-app.set('views', './views'); // Ubicació de les plantilles
+app.set('views', './views'); // Ubicación de las plantillas
 
 
 //inicio middleware
@@ -35,14 +35,14 @@ app.use((req,res,next)=>{//interseta todas las peticiones
 })
 
 //Le digo que tengo diferentes endpoints
-app.use('/movies', moviesRoutes);
+app.use('/movies', moviesRoutes);//Todad las peticiones de este archivo empezará con /movies
 app.use('/songs', songsRoutes);
 
 
 //Endpoints
 
 app.get('/', (req, res) => {
-    const {user}=req.session//Obtengo la info del usuario
+    const {user}=req.session//Obtengo la información del usuario
     res.render("loginForm", user)
 })
 
@@ -102,13 +102,13 @@ app.post('/logout', async(req,res)=> {
 
 app.get('/protected2',(req, res)=>{
     const {user}=req.session //Obtengo los datos de session del usuario
-    if(!user) return res.status(403).render('noAutorizado',{message:'Access denied'})
+    if(!user) return res.status(403).render('unauthorized',{message:'Access denied'})
         res.render('protected2', user)
 })
 
 app.get('/protected', (req,res)=>{
       const {user}=req.session
-    if (!user) return res.status(403).render('noAutorizado',{message:'Access denied'})
+    if (!user) return res.status(403).render('unauthorized',{message:'Access denied'})
     res.render('home',user)
 })
 
