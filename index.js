@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser';
 import jwt from 'jsonwebtoken';
 import methodOverride from 'method-override';//simula peticiones PUT y DELETE en los formularios HTML
 import songsRoutes from './routes/songsRoutes.js';
-//import moviesRoutes from './routes/movies.js';
+import moviesRoutes from './routes/moviesRoutes.js';
 
 const app = express();
 //Declaro lo que usaré
@@ -35,7 +35,7 @@ app.use((req,res,next)=>{//interseta todas las peticiones
 })
 
 //Le digo que tengo diferentes endpoints
-//app.use('/movies', moviesRoutes);
+app.use('/movies', moviesRoutes);
 app.use('/songs', songsRoutes);
 
 

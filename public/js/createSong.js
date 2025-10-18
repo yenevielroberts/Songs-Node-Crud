@@ -1,5 +1,5 @@
 
-const formCreateSong=document.getElementById('form-create');
+const formCreateSong=document.getElementById('form-create-song');
 
 formCreateSong.addEventListener('submit',e=>{
     e.preventDefault()

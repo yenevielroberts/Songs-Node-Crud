@@ -6,9 +6,9 @@ btnDelete.addEventListener('click', () => {
     const confirmacion = confirm('Are you sure?');
     if (confirmacion == true) {
 
-        const id_song = parseInt(document.getElementById('id_song').value)
+        const item_id = parseInt(document.getElementById('item_id').value)
 
-        fetch(`/songs/songs/${id_song}`, {
+        fetch(`/songs/songs/${item_id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

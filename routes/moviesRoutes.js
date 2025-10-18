@@ -39,8 +39,9 @@ router.get("/", (req, res) => {
         } else {
 
             const data = readData();
+            const movies=data.movies
             const user = { name: "Yeneviel" }
-            res.render("songs/listSongs", { user, data })
+            res.render("movies/listMovies", { user, movies })
         }
 
     } catch (error) {
@@ -52,7 +53,7 @@ router.get("/", (req, res) => {
 })
 
 //Obtengo la vista para crear una nueva canción
-router.get("/songs", (req, res) => {
+router.get("/movies", (req, res) => {
 
     try {
         //Compruebo accesso
@@ -62,7 +63,7 @@ router.get("/songs", (req, res) => {
             return res.status(403).render('noAutorizado',{message:'Access denied'})
         } else {
 
-            res.render("songs/createSong")
+            res.render("movies/createMovies")
         }
     } catch (error) {
 
@@ -73,7 +74,7 @@ router.get("/songs", (req, res) => {
 })
 
 //Creem un endpoint per obtenir un formulario con los datos ya rellenados para editar
-router.get("/songs/:id", (req, res) => {
+router.get("/movies/:id", (req, res) => {
 
     try {
         //compruebo accesso
@@ -85,13 +86,13 @@ router.get("/songs/:id", (req, res) => {
             //Extraiem l'id de l'url recordem que req es un objecte tipus requets
             // que conté l'atribut params i el podem consultar
             const id = parseInt(req.params.id);
-            const song = data.songs.find((song) => song.id === id);
+            const movie = data.movies.find((song) => song.id === id);
 
-            if (song == null) {
+            if (movie == null) {
 
-                res.status(404).json({ message: "Song not found" });
+                res.status(404).json({ message: "Movie not found" });
             } else {
-                res.render('songs/editSong', { song });
+                res.render('movies/editMovies', { song: movie });
             }
         }
 
@@ -102,7 +103,7 @@ router.get("/songs/:id", (req, res) => {
 
 
 })
-//Creem un endpoint per obtenir una canço per un id y mostrarlo en vista
+//Creem un endpoint per obtenir un peli per un id y mostrarlo en vista
 router.get("/show/:id", (req, res) => {
 
     try {
@@ -115,13 +116,13 @@ router.get("/show/:id", (req, res) => {
             //Extraiem l'id de l'url recordem que req es un objecte tipus requets
             // que conté l'atribut params i el podem consultar
             const id = parseInt(req.params.id);
-            const song = data.songs.find((song) => song.id === id);
+            const movie = data.movies.find((song) => song.id === id);
 
-            if (song == null) {
+            if (movie == null) {
 
-                res.status(404).json({ message: "Song not found" });
+                res.status(404).json({ message: "Movie not found" });
             } else {
-                res.render('songs/detailSong', { song });
+                res.render('movies/detailMovies', { movie: movie });
             }
         }
 
@@ -135,7 +136,7 @@ router.get("/show/:id", (req, res) => {
 
 
 //Creem un endpoint del tipus post per afegir una canço
-router.post("/songs", (req, res) => {
+router.post("/movies", (req, res) => {
 
     try {
         //compruebo acceso
@@ -147,8 +148,16 @@ router.post("/songs", (req, res) => {
             const body = req.body;
             //todo lo que viene en ...body se agrega al nuevo libro
 
-            const { title } = req.body//Treu la clau de l'objecte body
-            const trobat = data.songs.find((song) => song.title === title)//Miro si existe el libro antes de agregarlo
+            const { title } = req.body
+            const { director } = req.body//Treu la clau de l'objecte body
+            const trobat = data.movies.find((movie) =>{
+
+                if(movie.title === title && movie.director===director){
+                    return true
+                }else{
+                    return false
+                }
+            })//Miro si existe el libro antes de agregarlo
 
             /**Otra forma de hacerlo
              * if(data.books.some((book)=> book.name===name)){
@@ -157,15 +166,15 @@ router.post("/songs", (req, res) => {
              * **/
 
             if (!trobat) {
-                const newSong = {
+                const newMovie = {
                     id: data.songs.length + 1,
                     ...body,//fa una copia del body
                 };
-                data.songs.push(newSong);
+                data.movies.push(newMovie);
                 writeData(data);
-                res.json(newSong);
+                res.json(newMovie);
             } else {
-                res.json({ message: "This song already exists" })
+                res.json({ message: "This movie already exists" })
             }
         }
 
@@ -178,7 +187,7 @@ router.post("/songs", (req, res) => {
 });
 
 //Creem un endpoint per modificar una canço
-router.put("/songs/:id", (req, res) => {
+router.put("/movies/:id", (req, res) => {
 
     try {
         //compruebo acceso
@@ -190,17 +199,17 @@ router.put("/songs/:id", (req, res) => {
             const data = readData();
             const body = req.body;
             const id = parseInt(req.params.id);
-            const songIndex = data.songs.findIndex((song) => song.id === id);
+            const movieIndex = data.movies.findIndex((song) => song.id === id);
 
-            if (songIndex != -1) {
-                data.songs[songIndex] = {//Combina los dos objetos y actualiza los campos del body  y deja intactos los demás.
-                    ...data.songs[songIndex],
+            if (movieIndex != -1) {
+                data.movies[movieIndex] = {//Combina los dos objetos y actualiza los campos del body  y deja intactos los demás.
+                    ...data.movies[movieIndex],
                     ...body,
                 };
                 writeData(data);
-                res.json({ message: "Song updated successfully", id: id });
+                res.json({ message: "Movie updated successfully", id: id });
             } else {
-                res.status(404).json({ message: 'Song not found' })
+                res.status(404).json({ message: 'Movie not found' })
             }
         }
 
@@ -214,7 +223,7 @@ router.put("/songs/:id", (req, res) => {
 
 
 //Creem un endpoint per eliminar una canço
-router.delete("/songs/:id", (req, res) => {
+router.delete("/movies/:id", (req, res) => {
 
     try {
         //compruebo acceso
@@ -226,19 +235,18 @@ router.delete("/songs/:id", (req, res) => {
         } else {
             const data = readData();
             const id = parseInt(req.params.id);
-            const songIndex = data.songs.findIndex((song) => song.id === id);
+            const movieIndex = data.songs.findIndex((song) => song.id === id);
             //splice esborra a partir de bookIndex, el número de elements 
             // que li indiqui al segon argument, en aquest cas 1
 
-            if (songIndex == -1) {
-                res.status(404).json({ message: "Song not found" })
+            if (movieIndex == -1) {
+                res.status(404).json({ message: "Movie not found" })
             } else {
-                data.songs.splice(songIndex, 1);
+                data.movies.splice(movieIndex, 1);
                 writeData(data);
-                res.json({ message: "Song deleted successfully" });
+                res.json({ message: "Movie deleted successfully" });
             }
         }
-
     } catch (error) {
         console.log(error);
         res.status(500).render('noAutorizado',{ message: 'Internal server error' })

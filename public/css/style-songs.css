@@ -105,7 +105,7 @@ button:hover{
 }
 
 /*Estilo formularios*/
-.container-form-song{
+.container-form{
     width: 400px;
     height: 500px;
     border: solid #9D174D;
@@ -115,11 +115,11 @@ button:hover{
     margin-top: 100px;
 }
 
-.container-form-song h1{
+.container-form h1{
     margin: 10px;
 }
 
-#form-create, #form-edit{
+#form-create-song,#form-create-movie, #form-edit{
 
     display: flex;
     flex-direction: column;

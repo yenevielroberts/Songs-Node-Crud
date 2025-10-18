@@ -13,11 +13,11 @@
             "year": "2020"
         }
     ],
-    "movies":[
+    "movies": [
         {
             "id": 1,
             "title": "How I live now",
-            "Author": "Bo Baskoro",
+            "director": "Bo Baskoro",
             "year": "2020"
         }
     ]
