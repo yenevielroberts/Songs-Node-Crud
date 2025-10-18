@@ -17,14 +17,22 @@
             <a href="/movies/movies">Add new movie</a>
             <a href="/protected">Home</a>
             <ul class="movie-list">
-                <% movies.forEach(movie => { %>
-                    <li class="lista-item">
+                <%if(message){ %>
+                      <li class="lista-item">
                         <div>
-                            <p><%= movie.title %></p>
-                            <a href="/movies/show/<%= movie.id %>">View Details</a>
+                            <p><%= message%></p>
                         </div>
                     </li>
-                <% }) %>
+                <%}else{%>
+                    <% movies.forEach(movie => { %>
+                        <li class="lista-item">
+                            <div>
+                                <p><%= movie.title %></p>
+                                <a href="/movies/show/<%= movie.id %>">View Details</a>
+                            </div>
+                        </li>
+                    <% })
+                 } %>
             </ul>
         </section>
     </main>

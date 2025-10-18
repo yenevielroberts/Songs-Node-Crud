@@ -1,5 +1,6 @@
 import express from 'express'; //importamos express
 import fs from 'fs'; //importamos fs para gestionar archivos
+import crypto from 'node:crypto';
 
 const router = express.Router();
 
@@ -41,7 +42,14 @@ router.get("/", (req, res) => {
             const data = readData();
             const movies=data.movies
             const user = { name: "Yeneviel" }
-            res.render("movies/listMovies", { user, movies })
+            if(movies!=null){
+                res.render("movies/listMovies", { user, movies })
+
+            }else{
+                const message="Movie not found"
+                res.status(404).render('movies/listMovies',{user, message  });
+            }
+            
         }
 
     } catch (error) {
@@ -166,8 +174,9 @@ router.post("/movies", (req, res) => {
              * **/
 
             if (!trobat) {
+                const id = crypto.randomUUID()
                 const newMovie = {
-                    id: data.movies.length + 1,
+                    id: id,
                     ...body,//fa una copia del body
                 };
                 data.movies.push(newMovie);

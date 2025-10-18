@@ -12,19 +12,5 @@
             "singer": "Dean Lewis",
             "year": "2010"
         }
-    ],
-    "movies": [
-        {
-            "id": 2,
-            "title": "How I live now",
-            "director": "YP",
-            "year": "2019"
-        },
-        {
-            "id": 3,
-            "title": "How I live now",
-            "director": "Y",
-            "year": "2019"
-        }
     ]
 }
