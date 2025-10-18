@@ -4,7 +4,7 @@ btnDeleteMovie.addEventListener('click', () => {
     const confirmation = confirm('Are you sure?');
     if (confirmation == true) {
 
-        const item_id = parseInt(document.getElementById('item_id').value)
+        const item_id = document.getElementById('item_id').value
 
         fetch(`/movies/movies/${item_id}`, {
             method: 'DELETE',

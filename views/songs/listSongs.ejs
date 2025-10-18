@@ -17,14 +17,22 @@
             <a href="/songs/songs">Add new song</a>
             <a href="/protected">Home</a>
             <ul class="song-list">
-                <% data.songs.forEach(song => { %>
+                <% if(songs.length==0){ %>
                     <li class="lista-item">
                         <div>
-                            <p><%= song.title %></p>
-                            <a href="/songs/show/<%= song.id %>">View Details</a>
+                            <p>No songs available</p>
                         </div>
                     </li>
-                <% }) %>
+                <%}else{%>
+                    <% songs.forEach(song => { %>
+                        <li class="lista-item">
+                            <div>
+                                <p><%= song.title %></p>
+                                <a href="/songs/show/<%= song.id %>">View Details</a>
+                            </div>
+                        </li>
+                    <% }) 
+                }%>
             </ul>
         </section>
     </main>

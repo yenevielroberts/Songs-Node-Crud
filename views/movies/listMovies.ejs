@@ -17,22 +17,21 @@
             <a href="/movies/movies">Add new movie</a>
             <a href="/protected">Home</a>
             <ul class="movie-list">
-                <%if(movies==null){ %>
+                <% if(movies.length==0){ %>
                       <li class="lista-item">
                         <div>
-                            <p><%= message%></p>
+                            <p>No movies available</p>
                         </div>
                     </li>
-                <%}else{%>
+                <% }else{ %>
                     <% movies.forEach(movie => { %>
                         <li class="lista-item">
                             <div>
-                                <p><%= movie.title %></p>
+                                <p><%= movie.title %> by <%= movie.director%></p>
                                 <a href="/movies/show/<%= movie.id %>">View Details</a>
                             </div>
                         </li>
-                    <% })
-                 } %>
+                    <% })} %>
             </ul>
         </section>
     </main>

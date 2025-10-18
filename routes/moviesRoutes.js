@@ -42,7 +42,7 @@ router.get("/", (req, res) => {
             const data = readData();
             const movies = data.movies
             const user = { name: "Yeneviel" }
-           
+
             res.render("movies/listMovies", { user, movies })
 
 
@@ -155,24 +155,18 @@ router.post("/movies", (req, res) => {
             const { title } = req.body
             const { director } = req.body//Treu la clau de l'objecte body
 
-            let trobat = false;
-            if (data.movies!=null) {
-                trobat = data.movies.find((movie) => {
-
-                    if (movie.title === title && movie.director === director) {
-                        return true
-                    } else {
-                        return false
-                    }
-                })//Miro si existe el libro antes de agregarlo
-                /**Otra forma de hacerlo
-               * if(data.books.some((book)=> book.name===name)){
-               * return res.status.(400).json({message:"Este libro ya existe"})
-               * }
-               * **/
-            }else{
-                trobat=false
-            }
+            const trobat = data.movies.find((movie) => {
+                if (movie.title === title && movie.director === director) {
+                    return true
+                } else {
+                    return false
+                }
+            })//Miro si existe el libro antes de agregarlo
+            /**Otra forma de hacerlo
+           * if(data.books.some((book)=> book.name===name)){
+           * return res.status.(400).json({message:"Este libro ya existe"})
+           * }
+           * **/
 
             if (!trobat) {
                 const id = crypto.randomUUID()
@@ -206,7 +200,7 @@ router.put("/movies/:id", (req, res) => {
         } else {
             const data = readData();
             const body = req.body;
-            const id = parseInt(req.params.id);
+            const id = req.params.id;
             const movieIndex = data.movies.findIndex((song) => song.id === id);
 
             if (movieIndex != -1) {
@@ -242,7 +236,7 @@ router.delete("/movies/:id", (req, res) => {
             return res.status(403).render('unauthorized', { message: 'Access denied' })
         } else {
             const data = readData();
-            const id = parseInt(req.params.id);
+            const id = req.params.id;
             const movieIndex = data.songs.findIndex((song) => song.id === id);
             //splice esborra a partir de bookIndex, el número de elements 
             // que li indiqui al segon argument, en aquest cas 1

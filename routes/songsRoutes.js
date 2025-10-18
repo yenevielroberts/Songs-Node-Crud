@@ -1,5 +1,6 @@
 import express from 'express'; //importamos express
 import fs from 'fs'; //importamos fs para gestionar archivos
+import crypto from 'node:crypto';
 
 const router = express.Router();
 
@@ -40,7 +41,8 @@ router.get("/", (req, res) => {
 
             const data = readData();
             const user = { name: "Yeneviel" }
-            res.render("songs/listSongs", { user, data })
+            const songs=data.songs
+            res.render("songs/listSongs", { user, songs })
         }
 
     } catch (error) {
@@ -84,7 +86,7 @@ router.get("/songs/:id", (req, res) => {
             const data = readData();
             //Extraiem l'id de l'url recordem que req es un objecte tipus requets
             // que conté l'atribut params i el podem consultar
-            const id = parseInt(req.params.id);
+            const id = req.params.id;
             const song = data.songs.find((song) => song.id === id);
 
             if (song == null) {
@@ -114,7 +116,7 @@ router.get("/show/:id", (req, res) => {
             const data = readData();
             //Extraiem l'id de l'url recordem que req es un objecte tipus requets
             // que conté l'atribut params i el podem consultar
-            const id = parseInt(req.params.id);
+            const id = req.params.id;
             const song = data.songs.find((song) => song.id === id);
 
             if (song == null) {
@@ -157,8 +159,9 @@ router.post("/songs", (req, res) => {
              * **/
 
             if (!trobat) {
+                const id = crypto.randomUUID()
                 const newSong = {
-                    id: data.songs.length + 1,
+                    id:id,
                     ...body,//fa una copia del body
                 };
                 data.songs.push(newSong);
@@ -189,7 +192,7 @@ router.put("/songs/:id", (req, res) => {
         } else {
             const data = readData();
             const body = req.body;
-            const id = parseInt(req.params.id);
+            const id = req.params.id;
             const songIndex = data.songs.findIndex((song) => song.id === id);
 
             if (songIndex != -1) {
@@ -225,7 +228,7 @@ router.delete("/songs/:id", (req, res) => {
             return res.status(403).render('unauthorized',{message:'Access denied'})
         } else {
             const data = readData();
-            const id = parseInt(req.params.id);
+            const id = req.params.id;
             const songIndex = data.songs.findIndex((song) => song.id === id);
             //splice esborra a partir de bookIndex, el número de elements 
             // que li indiqui al segon argument, en aquest cas 1
