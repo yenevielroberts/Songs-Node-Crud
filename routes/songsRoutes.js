@@ -114,7 +114,7 @@ router.post("/songs", (req, res) => {
         };
         data.songs.push(newSong);
         writeData(data);
-        res.render('songs/detailSong',{newSong});
+        res.json(newSong);
     } else {
         res.render({ message: "This song already exists" })
     }

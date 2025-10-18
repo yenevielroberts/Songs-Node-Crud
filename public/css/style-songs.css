@@ -119,7 +119,7 @@ button:hover{
     margin: 10px;
 }
 
-#form-song{
+#form-create, #form-edit{
 
     display: flex;
     flex-direction: column;
