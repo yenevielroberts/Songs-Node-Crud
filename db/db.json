@@ -1,1 +1,11 @@
-{"songs":[],"movies":[]}
+{
+    "songs": [
+        {
+            "id": "e4ee3a1a-066e-42de-ac1e-ce688fce8f09",
+            "title": "Be",
+            "singer": "Dean Lewis",
+            "year": "2020"
+        }
+    ],
+    "movies": []
+}

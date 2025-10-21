@@ -96,7 +96,6 @@ app.post('/logout', async(req,res)=> {
     res
     .clearCookie('access_token')//Elimino la cookie
     .json({message:'Logout successfull'})
-    .send('logout');
     
 });
 

@@ -237,7 +237,7 @@ router.delete("/movies/:id", (req, res) => {
         } else {
             const data = readData();
             const id = req.params.id;
-            const movieIndex = data.songs.findIndex((song) => song.id === id);
+            const movieIndex = data.movies.findIndex((movie) => movie.id === id);
             //splice esborra a partir de bookIndex, el número de elements 
             // que li indiqui al segon argument, en aquest cas 1
 
