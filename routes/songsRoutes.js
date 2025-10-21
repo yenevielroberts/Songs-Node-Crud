@@ -40,7 +40,7 @@ router.get("/", (req, res) => {
         } else {
 
             const data = readData();
-            const user = { name: "Yeneviel" }
+            const user = { name: 'Yeneviel'}
             const songs=data.songs
             res.render("songs/listSongs", { user, songs })
         }

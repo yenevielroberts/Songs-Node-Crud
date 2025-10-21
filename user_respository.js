@@ -39,7 +39,11 @@ export class UserRepository {
             password: hashedPassword
         }).save()
 
-        return id
+        const publicUser={
+            _id:id,
+            username:username
+        }
+        return publicUser
     }
 
     static async login({ username, password }) {
@@ -57,9 +61,6 @@ export class UserRepository {
         const { password: _, ...publicUser } = user
         return publicUser
     }
-
-
-
 }
 
 class Validation {
