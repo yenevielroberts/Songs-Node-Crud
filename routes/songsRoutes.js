@@ -39,10 +39,11 @@ router.get("/", (req, res) => {
             return res.status(403).render('unauthorized',{message:'Access denied'})
         } else {
 
+            console.log(user)
             const data = readData();
-            const user = { name: 'Yeneviel'}
+            const userName = { name: user.username}
             const songs=data.songs
-            res.render("songs/listSongs", { user, songs })
+            res.render("songs/listSongs", { userName, songs })
         }
 
     } catch (error) {
