@@ -41,7 +41,7 @@ router.get("/", (req, res) => {
 
             const data = readData();
             const movies = data.movies
-            const userName = { name: user.userName }
+            const userName = { name: user.username }
 
             res.render("movies/listMovies", { userName, movies })
         }
