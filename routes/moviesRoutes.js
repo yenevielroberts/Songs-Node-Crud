@@ -9,8 +9,6 @@ const router = express.Router();
 const readData = () => {
     try {
         const data = fs.readFileSync("./db/db.json");
-        //console.log(data);
-        //console.log(JSON.parse(data));
         return JSON.parse(data)
 
     } catch (error) {
@@ -29,6 +27,8 @@ const writeData = (data) => {
 }
 
 //Endpoints
+
+//Devuelve una lista con todas las películas
 router.get("/", (req, res) => {
 
     try {
@@ -41,11 +41,9 @@ router.get("/", (req, res) => {
 
             const data = readData();
             const movies = data.movies
-            const user = { name: "Yeneviel" }
+            const userName = { name: user.userName }
 
-            res.render("movies/listMovies", { user, movies })
-
-
+            res.render("movies/listMovies", { userName, movies })
         }
 
     } catch (error) {
@@ -77,7 +75,7 @@ router.get("/movies", (req, res) => {
 
 })
 
-//Creem un endpoint per obtenir un formulario con los datos ya rellenados para editar
+//Cremos un endpoint para obtener un formulario con los datos ya rellenados para editar
 router.get("/movies/:id", (req, res) => {
 
     try {
@@ -214,7 +212,6 @@ router.put("/movies/:id", (req, res) => {
                 res.status(404).json({ message: 'Movie not found' })
             }
         }
-
 
     } catch (error) {
         console.log(error);
